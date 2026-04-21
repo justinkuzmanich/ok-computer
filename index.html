@@ -112,9 +112,9 @@ nav {
 }
 .hero-img-main,
 .hero-img-top {
-  width: 180px;
-  height: 180px;
-  flex-shrink: 0;
+  flex: 1;
+  aspect-ratio: 1;
+  max-width: 100%;
   overflow: hidden;
 }
 .hero-right img {
@@ -333,7 +333,7 @@ footer {
   .hamburger { display: flex; }
   #hero { grid-template-columns: 1fr; }
   .hero-right { padding: 16px; gap: 16px; }
-  .hero-img-main, .hero-img-top { width: 44vw; height: 44vw; }
+  .hero-img-main, .hero-img-top { max-width: calc(100vw - 32px); }
   .hero-left { padding: 48px 20px; }
   #services { grid-template-columns: 1fr; }
   .services-left { padding: 48px 20px; position: static; }
