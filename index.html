@@ -651,29 +651,33 @@ footer {
     <div style="background:#595cef;height:12px;width:100%;"></div>
     <div class="contact-right-inner">
     <form class="form" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="access_key" value="60953481-2aec-42ea-b4da-09f926331898">
+      <input type="hidden" name="subject" value="New enquiry — OK Computer">
+      <input type="hidden" name="to" value="help@ok-computer.net,justin.kuzmanich@gmail.com">
+      <input type="checkbox" name="botcheck" style="display:none">
       <div class="form-row">
         <div class="form-group">
           <label class="form-lbl">First Name</label>
-          <input class="form-ctrl" type="text" placeholder="Enter your first name">
+          <input class="form-ctrl" type="text" name="first_name" placeholder="Enter your first name">
         </div>
         <div class="form-group">
           <label class="form-lbl">Last Name</label>
-          <input class="form-ctrl" type="text" placeholder="Enter your last name">
+          <input class="form-ctrl" type="text" name="last_name" placeholder="Enter your last name">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-lbl">Email *</label>
-          <input class="form-ctrl" type="email" placeholder="Enter your email address" required>
+          <input class="form-ctrl" type="email" name="email" placeholder="Enter your email address" required>
         </div>
         <div class="form-group">
           <label class="form-lbl">Phone</label>
-          <input class="form-ctrl" type="tel" placeholder="(415) 000-0000">
+          <input class="form-ctrl" type="tel" name="phone" placeholder="(415) 000-0000">
         </div>
       </div>
       <div class="form-group">
           <label class="form-lbl">I'm Interested In</label>
-          <select class="form-ctrl">
+          <select class="form-ctrl" name="service">
             <option value="">Select</option>
             <option>Computer Repair</option>
             <option>Networking</option>
@@ -687,7 +691,7 @@ footer {
       </div>
       <div class="form-group">
         <label class="form-lbl">Message *</label>
-        <textarea class="form-ctrl" placeholder="Enter your message" required></textarea>
+        <textarea class="form-ctrl" name="message" placeholder="Enter your message" required></textarea>
       </div>
       <button type="submit" class="form-submit">Submit</button>
     </form>
@@ -761,12 +765,30 @@ function closeMenu() {
   revealEl('.contact-right', 0.1);
 })();
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('.form-submit');
-  btn.textContent = 'Sent ✓';
-  btn.style.background = '#1a7a4f';
-  setTimeout(() => { btn.textContent = 'Submit'; btn.style.background = ''; e.target.reset(); }, 3000);
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+    });
+    const result = await res.json();
+    if (result.success) {
+      btn.textContent = 'Sent ✓';
+      btn.style.background = '#1a7a4f';
+      setTimeout(() => { btn.textContent = 'Submit'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 3000);
+    } else {
+      throw new Error();
+    }
+  } catch {
+    btn.textContent = 'Error — please try again';
+    btn.style.background = '#c0392b';
+    setTimeout(() => { btn.textContent = 'Submit'; btn.style.background = ''; btn.disabled = false; }, 4000);
+  }
 }
 </script>
 </body>
