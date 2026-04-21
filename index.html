@@ -105,15 +105,13 @@ nav {
   display: flex;
   flex-direction: column;
   background: var(--dark);
-  padding: 20px 48px;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+  padding: 12px;
+  gap: 12px;
 }
 .hero-img-main,
 .hero-img-top {
-  width: 160px;
-  height: 160px;
+  width: 100%;
+  aspect-ratio: 1;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -333,7 +331,7 @@ footer {
   .hamburger { display: flex; }
   #hero { grid-template-columns: 1fr; }
   .hero-right { padding: 16px; gap: 16px; }
-  .hero-img-main, .hero-img-top { max-width: calc(100vw - 32px); }
+  .hero-right { padding: 10px; gap: 10px; }
   .hero-left { padding: 48px 20px; }
   #services { grid-template-columns: 1fr; }
   .services-left { padding: 48px 20px; position: static; }
