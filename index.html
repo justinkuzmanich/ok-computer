@@ -343,6 +343,11 @@ footer {
   margin-top: 6px;
 }
 
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav { padding: 0 20px; }
@@ -712,6 +717,48 @@ function closeMenu() {
   document.getElementById('mobileNav').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+(function() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  function revealGroup(sel, step) {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.classList.add('reveal');
+      if (step) el.style.transitionDelay = (i * step) + 's';
+      observer.observe(el);
+    });
+  }
+  function revealEl(sel, delay) {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    el.classList.add('reveal');
+    if (delay) el.style.transitionDelay = delay + 's';
+    observer.observe(el);
+  }
+
+  // Hero (fires immediately on load)
+  revealEl('.hero-title');
+  revealGroup('.hero-para', 0.1);
+  revealEl('.hero-left > a', 0.28);
+  revealEl('.hero-img-main', 0.08);
+  revealEl('.hero-img-top', 0.18);
+  // Services
+  revealEl('.services-left');
+  revealGroup('.svc-row', 0.06);
+  // Stats
+  revealEl('.stats-label-col');
+  revealGroup('.stat', 0.08);
+  // Testimonials
+  revealEl('.testi-top');
+  revealGroup('.testi-card', 0.1);
+  // Contact
+  revealEl('.contact-left');
+  revealEl('.contact-right', 0.1);
+})();
 
 function handleSubmit(e) {
   e.preventDefault();
