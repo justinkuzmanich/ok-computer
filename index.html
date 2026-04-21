@@ -30,8 +30,7 @@ nav {
   background: var(--bg); border-bottom: 1px solid var(--border);
   position: sticky; top: 0; z-index: 100;
 }
-.nav-logo { display: flex; align-items: center; gap: 20px; }
-.nav-tagline { font-size: 13px; font-weight: 300; font-style: italic; color: var(--text); }
+.nav-logo { display: flex; align-items: center; }
 .nav-logo img { height: 78px; width: auto; display: block; filter: invert(1); }
 .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a {
@@ -352,7 +351,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#"><img src="images/logo.png" alt="OK Computer"><p class="nav-tagline">Supporting Marin since 1998</p></a>
+  <a class="nav-logo" href="#"><img src="images/logo.png" alt="OK Computer"></a>
   <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="document.getElementById('tagline').scrollIntoView({behavior:'smooth'})">About</a></li>
     <li><a href="javascript:void(0)" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a></li>
