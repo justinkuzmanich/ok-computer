@@ -156,42 +156,6 @@ nav {
 }
 
 /* ── TAGLINE ── */
-#tagline {
-  background: var(--bg); padding: 80px 48px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-  align-items: center; border-top: 1px solid var(--border);
-}
-.tagline-left { }
-.tagline-eyebrow {
-  font-size: 12px; font-weight: 400; color: var(--muted); margin-bottom: 1.5rem;
-}
-.tagline-text {
-  font-size: clamp(28px, 3.5vw, 52px); font-weight: 800;
-  color: var(--text); line-height: 1.1; letter-spacing: -0.02em;
-  margin-bottom: 2rem;
-}
-.btn-dark {
-  display: inline-block;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--white);
-  background: var(--text); padding: 12px 28px;
-  text-decoration: none; transition: background 0.2s;
-}
-.btn-dark:hover { background: var(--accent); }
-.tagline-deco {
-  position: relative; height: 200px;
-}
-/* dot grid decoration */
-.dot-grid {
-  display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px;
-  opacity: 0.25;
-}
-.dot-grid span {
-  width: 5px; height: 5px; background: var(--text);
-  border-radius: 50%; display: block;
-}
-.dot-grid span.lit { opacity: 1; background: var(--accent); }
-
 /* ── STATS ── */
 #stats {
   background: var(--accent); padding: 0 48px;
@@ -368,9 +332,7 @@ footer {
   #services { grid-template-columns: 1fr; }
   .services-left { padding: 48px 20px; position: static; }
   .svc-row { grid-template-columns: 80px 1fr; }
-  #tagline { grid-template-columns: 1fr; padding: 60px 20px; }
-  .tagline-deco { display: none; }
-  #stats { grid-template-columns: 1fr; padding: 0 20px; }
+#stats { grid-template-columns: 1fr; padding: 0 20px; }
   .stats-label-col { padding: 32px 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); min-width: auto; }
   .stats-grid { grid-column: 1; grid-template-columns: 1fr 1fr; }
   .stat { border-left: none; padding: 32px 20px; }
@@ -556,19 +518,6 @@ footer {
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- TAGLINE -->
-<section id="tagline">
-  <div class="tagline-left">
-    <p class="tagline-eyebrow">Matt Gallagher, OK Computer</p>
-    <h2 class="tagline-text">OK Computer, you break em,<br>we fix em.</h2>
-  </div>
-  <div class="tagline-deco">
-    <div class="dot-grid">
-      <span></span><span></span><span></span><span class="lit"></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span class="lit"></span><span></span><span></span><span></span><span></span><span></span><span class="lit"></span><span class="lit"></span><span></span>
-    </div>
   </div>
 </section>
 
